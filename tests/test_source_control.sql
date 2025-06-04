@@ -1,0 +1,1 @@
+SELECT * FROM control.source_db_control WHERE is_active = 1

@@ -1,0 +1,8 @@
+# models/staging/control/schema.yml
+version: 2
+
+sources:
+  - name: control
+    schema: control
+    tables:
+      - name: source_db_control

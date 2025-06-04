@@ -1,0 +1,23 @@
+version: 2
+sources:
+  - name: sap_b1
+    schema: raw_sap
+    tables:
+      - name: OUBR	# OUBR_Branches
+      - name: OPLN	# OPLN_PriceList
+      - name: OWHS	# OWHS_Warehouses
+      - name: OSLP	# OSLP_SalesPerson
+      - name: OITG	# OITG_ItemProperties
+      - name: OCRD	# OCRD_BusinessPartner
+      - name: OITM	# OITM_Items
+      - name: ORDR	# ORDR_SalesOrder
+      - name: OQUT	# OQUT_SalesQuotation
+      - name: OPDN	# OPDN_GoodsReceiptPO
+      - name: OPCH	# OPCH_AP_Invoice
+      - name: OINV	# OINV_AR_Invoice
+      - name: OITW	# OITW_ItemsWarehouse
+      - name: OITB	# OITB_ItemGroup
+      - name: INV1	# INV1_AR_InvoiceLine
+      - name: RIN1	# RIN1_CN_InvoiceLine
+      - name: ORIN	# ORIN_CN_Invoice
+      - name: OPRC	# OPRC_CostCentre
