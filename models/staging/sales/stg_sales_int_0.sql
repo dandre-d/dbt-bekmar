@@ -86,7 +86,7 @@ select
     cast(isnull(whs_code, '-1') as char(25))  as whs_code  ,
     cast(isnull(item_code,'-1') as nvarchar(50) )  as item_code,
     sales.slp_code,
-    d_company.company_key,
+    {{ sqlserver_surrogate_key(['source_db']) }} as company_key,
     sales.quantity,
     sales.unit_price,
     sales.discount,
@@ -99,4 +99,3 @@ select
     sales.invoice_type,
     sales.is_active
 from unioned_sales as sales
-inner join {{ ref("dim_company") }} d_company on sales.source_db COLLATE SQL_Latin1_General_CP850_CI_AS = d_company.company_db

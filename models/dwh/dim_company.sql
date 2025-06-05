@@ -5,7 +5,7 @@
 {{ config(materialized='table') }}
 
 SELECT 
-     {{ sqlserver_surrogate_key(['company_code', 'company_db']) }}  AS company_key,
+     {{ sqlserver_surrogate_key(['company_db']) }}  AS company_key,
     company_code,
     company_db,
     company_name,

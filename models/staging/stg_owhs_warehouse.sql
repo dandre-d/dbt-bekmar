@@ -3,14 +3,9 @@ with source as (
     from {{ ref('owhs_warehouses') }}
 ),
 
-company as (
-    select *
-    from {{ ref('dim_company') }}
-),
-
 transformed as (
     select 
-        c.company_key,
+        {{ sqlserver_proper_case_with_exceptions ('source_db') }} as company_key,
         s."WHsCode" as warehouse_code,
         s."WhsName" as warehouse_name,
         case 
@@ -19,8 +14,6 @@ transformed as (
         end as is_active,
         current_timestamp as insert_date
     from source s
-    left join company c 
-        on c.company_db = s.source_db
 )
 
 select

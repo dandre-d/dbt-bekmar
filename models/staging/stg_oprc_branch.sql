@@ -3,7 +3,7 @@
 -- Description:
 with branch as (
     SELECT DISTINCT 
-        company_key,
+        {{ sqlserver_surrogate_key(['source_db']) }} AS company_key,
         PrcCode AS branch_code,
         PrcName AS branch_name,
         CASE 
@@ -17,9 +17,6 @@ with branch as (
         END AS branch_group,
         sysdatetime() AS insert_date
     FROM {{ ref('oprc_costcentre_raw') }} cc
-    inner join {{ ref('dim_company') }} as dc
-    on  dc.company_db = cc.source_db
-
 
 )
 select 

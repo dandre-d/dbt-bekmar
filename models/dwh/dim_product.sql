@@ -4,9 +4,9 @@
 
 {{ config(materialized='table') }}
 
+with product as (
 select
-  {{ sqlserver_surrogate_key(['company_key', 'product_code']) }}  AS product_key
-      , dc.company_key
+      , {{ sqlserver_surrogate_key(['source_db']) }}  AS company_key
 			, cc.product_code COLLATE SQL_Latin1_General_CP1_CI_AS as product_code
 			, cc.product_name
 			, cc.product_group
@@ -17,5 +17,17 @@ select
 			, cc.is_active
 			, cc.insert_date
 from {{ ref('stg_oitm_product') }} cc
-inner join {{ ref('dim_company') }} as dc
-   on  dc.company_db = cc.source_db
+)
+select
+		{{ sqlserver_surrogate_key(['company_key', 'product_code']) }} AS product_key,
+		company_key,
+		product_code,
+		product_name,
+		product_group,
+		product_category,
+		product_type,
+		unit,
+		unit_price,
+		is_active,
+		insert_date
+		from product

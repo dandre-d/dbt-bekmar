@@ -5,11 +5,6 @@ with source as (
     from {{ ref('oslp_salesperson') }}
 ),
 
-company as (
-    select *
-    from {{ ref('dim_company') }}
-),
-
 transformed as (
     select 
 
@@ -20,11 +15,9 @@ transformed as (
             when s."Active" = 'Y' then 1 
             else 0 
         end as is_active,
-        c.company_key,
+        {{ sqlserver_surrogate_key(['source_db']) }} as company_key,
         current_timestamp as insert_date
     from source s
-    inner join company c
-        on c.company_db = s.source_db
 )
 
 select {{ sqlserver_surrogate_key(['sp_code', 'company_key']) }}  AS sp_key
