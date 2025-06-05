@@ -6,7 +6,7 @@
 select
   {{ sqlserver_surrogate_key(['company_key', 'branch_code']) }}  AS branch_key,
     dc.company_key,
-    cc.branch_code,
+    cc.branch_code COLLATE SQL_Latin1_General_CP1_CI_AS as branch_code,
     cc.branch_name,
     cc.branch_group,
     cc.is_active,

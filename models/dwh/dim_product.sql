@@ -7,7 +7,7 @@
 select
   {{ sqlserver_surrogate_key(['company_key', 'product_code']) }}  AS product_key
       , dc.company_key
-			, cc.product_code
+			, cc.product_code COLLATE SQL_Latin1_General_CP1_CI_AS as product_code
 			, cc.product_name
 			, cc.product_group
 			, cc.product_category

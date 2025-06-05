@@ -16,3 +16,8 @@ for example:
 ```sql
 select * from {{ ref('dim_tablefunctionbekmar') }}
 ```
+
+TO update to the below:
+stg_<source>__<source_table>[_<business_area>]
+dim_<business_object>[_<domain>]
+fact_<business_event>[_<domain>]

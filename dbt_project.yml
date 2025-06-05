@@ -43,3 +43,8 @@ models:
       +materialized: view
     dim_date:
       +materialized: table
+
+seeds:
+  bekmar_dbt:  # Replace with your actual dbt project name
+    locations:
+      file: seed/locations.csv

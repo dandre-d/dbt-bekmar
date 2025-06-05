@@ -6,3 +6,12 @@ sources:
     schema: control
     tables:
       - name: source_db_control
+
+models:
+  - name: stg_sales_int_0
+    description: "Consolidated staging view for invoices, credit notes, and discount adjustments."
+    columns:
+      - name: order_num
+        description: "The document or order number"
+      - name: invoice_type
+        description: "1 = invoice, 2 = credit note, 3 = discount adjustment"
